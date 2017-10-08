@@ -1,5 +1,6 @@
 package be.venneborg.refined.play
 
+import SIRDHelper._
 import eu.timepit.refined.auto._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
@@ -43,7 +44,7 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
     }
 
     // json handling
-    case POST(p"/json") => Action(SIRDHelper.jsonParser) { implicit request =>
+    case POST(p"/json") => Action(jsonParser) { implicit request =>
       import RefinedJsonFormats._
       implicit val tcFormat = Json.format[TestClass]
 
@@ -124,7 +125,7 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
   override protected def afterAll() = {
     wsClient.close()
     server.foreach(_.stop())
-    SIRDHelper.shutdown().futureValue
+    shutdown().futureValue
   }
 
   override implicit def patienceConfig: PatienceConfig = PatienceConfig(Span(2, Seconds))

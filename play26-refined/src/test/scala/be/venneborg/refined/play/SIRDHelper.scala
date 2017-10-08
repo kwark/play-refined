@@ -4,6 +4,7 @@ import akka.actor.ActorSystem
 import akka.stream.{ActorMaterializer, Materializer}
 import play.api.libs.json.JsValue
 import play.api.libs.typedmap.TypedMap
+import play.api.libs.ws.JsonBodyWritables
 import play.api.mvc.request.RequestTarget
 import play.api.mvc._
 
@@ -22,6 +23,8 @@ object SIRDHelper {
 
   val parsers: PlayBodyParsers = PlayBodyParsers()
   val jsonParser: BodyParser[JsValue] = parsers.json
+
+  implicit val jsValueBodyWritable = JsonBodyWritables.writeableOf_JsValue
 
   def shutdown(): Future[Any] = actorSystem.terminate()
 
