@@ -1,0 +1,25 @@
+sudo: false
+language: scala
+scala:
+- 2.11.11
+- 2.12.3
+script:
+- sbt +++$TRAVIS_SCALA_VERSION test
+jdk:
+- oraclejdk8
+cache:
+  directories:
+  - $HOME/.ivy2/cache
+  - $HOME/.sbt
+after_success:
+#- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt +++$TRAVIS_SCALA_VERSION releaseEarly;
+#  fi
+- find $HOME/.sbt -name "*.lock" | xargs rm
+- find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+env:
+  global:
+before_install:
+- if [ $TRAVIS_PULL_REQUEST = "false" ]; then
+    openssl aes-256-cbc -K $encrypted_e6b47a22dbe5_key -iv $encrypted_e6b47a22dbe5_iv -in travis/secrets.tar.enc -out travis/local.secrets.tar -d;
+    tar xv -C travis -f travis/local.secrets.tar;
+  fi
