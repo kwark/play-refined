@@ -12,12 +12,15 @@ cache:
   - $HOME/.ivy2/cache
   - $HOME/.sbt
 after_success:
-#- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt +++$TRAVIS_SCALA_VERSION releaseEarly;
-#  fi
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt +++$TRAVIS_SCALA_VERSION releaseEarly;
+  fi
 - find $HOME/.sbt -name "*.lock" | xargs rm
 - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
 env:
   global:
+  - secure: PB5Y2k9keMCYRMR8t+rAhiPSx45YVe4h+gdqcDRioGpJNi6oBtZBoBLL2CP7sSWU0IAyv0cM/qHYdaAePCFopcwQ0xys3eGPa56F7avaU+LeQ7S52hcrfgOpdAgfKPXdJ+Oe9rUxF903hkf/dmi5/7UAYZrSVs0GK28RB3WLNCwjUEd932Rt/JcaTv+2eXZrnaeOIVguRmE/lp+4iFe1nH6s9TUX2mPQF5yGFWvCf99YYlnx4nr56oYL2vhO6vr0NxSZQaj/ALSa/PnGOIOlSq6dZFnF0xUgxNZmxkczu8md6Kah8z+vw8ToVN8AoOV8CLh3kS0tsqZMYu9tZo02L7gRko2CtTjyBWvPwL1BwohA2lLajsGan3lKPB/agDmgFeIeFCnEsk+6CK9lqQFJ0dea7/JUG2b3xhnNFDkaXmfW+lO/xUYbUeanv63+Q+PLRiWYY8c1eXpIYE1TaIPj5yjlYPEg/UYbdJtv8afttNqwXW6yS8bc7jA4Vem89QehWSh5uzpNKp1bjoPSRy136DwknnPTs2lLt95DOX8DBJxl9ky5WPRlW2LLlF5Sp4uOPtM4OMNj4OR/EPUVWs9W7W3ZSh4+wgwrtPLJa6F8oQRou+3pGSxy7uwvxEO+TfsdZvMcYP0MjE6BU2TWHvVpjMRXd4czqKdK2n81zW2MGPM=
+  - secure: PTr0sjwgQqBtDOIe/E3YOuqqgEOylGGCV1ZQDUi+eztPWhICe/5XBSybVM3nK4XWhKwSfGMfxfHWC4KIaLqkEbdz29t3AIiQNPp7nqTviXy7oIcH2iDHeGXkrVuW/TXpcv0z/9mottQlqlYRWU7clZi2kPTSCjmN9jZkmW3mperrKN2VoffOY8VN9cFv/HmPGPuVBSLmsXeG3TlXf9sAYH5n3kQdraYOvG14HtCjTKiKPOc0AQehTdRL/3BJaKrb4FUy6luKCILTgsTeI+R/Fi5GvEKnkOohEcs2LDssJLetgl3uVk3g9BysEP/mmJ5icbo/sqbO2A2CYO9vvEGuMrjXwA94heily1Tui9xr8zlVwoseUPbtwuDB5BMSD1FSBA6pmFDRTSak2xGobPYcJnwNzwfUYuIPeqNFk+uTpauRYJnikgr8BllBPCDCBecwkJcYFdFqQVtWVozKjrwhXGro/ggk1BTQny0fFrDcBrwR7EYeX16eUwGLZSeLA4fsoq5Gp28V4GbFQQXq3Pex55OZLGYL1G+m+LsV957B7V9pAy7xDspWwdBA3nxHzGJwqxDqjbuUpVlftOF2M0xpflFnGQmwGyQ46RxAUcWVZxZlwhFNX6TqA5UuKNobKXYij+qTUdwg2ILpH76WN1ITjn6MClECDLcqf7krxoB4q4A=
+  - secure: DRhZnL8zNkh32eOF+7y4vKm+9tJOtzZFriII1YNSdTDZesJo0lL9nqcA4yGPBf9GEeMbzvTlLDHcqrvxPo98LfVAe3xNSjPIYEYO6IH2LIIy5d9QHUA1G+UCUQPhXOSfW1i51L8Lp9n58AlSYlp7eDBtGIR0O/OpkBwIsCzUHUhG6P4XxB6UaGjFpAsavR53HsUz7+QRrAcqv9Eu8AM8I8AWsITK2yoHrYA/nftyF25mA1pJSa5B0Cosh/M6mQ6W4pP+T8X35jiLYYbt6gWRLuRdzLiHbUtezoqS6/IsaAEvF7ZrUquCzQZF+AEYJtWJiO9DAu9FycgbOZ2E/POh7hwpzdHK/4yg5vJUJl/6I2lSHN5IjSH3lHkBLkD5OIlUWq4bwBDpZwmIiol0eSN63lvRpdoCC0ajq2/XknPyLdaggsKttLVoY6iDxvNOXeqT+0TWA+BNrP6uD8FFZ9vQhiw0Pi4nf9nZKs44I85kyS2uc7VqW+1NYUCGu2Z7ENzF4GewkkaWWu2tHqILUzSzv25hPoAQ5YHeSj2FL9fWH74++Pg0OoxPW1DwfTnrHEBqPxyzERIJnDHdVqUYxXSYeQbrKLXh11nG0lu437gfiQ4OLgwkv0QXoys0WIayzI9zfvgAZLDgfhyLDiFQHaxbeVfBp/HTq5HFKUxW4N4KH2Y=
 before_install:
 - if [ $TRAVIS_PULL_REQUEST = "false" ]; then
     openssl aes-256-cbc -K $encrypted_e6b47a22dbe5_key -iv $encrypted_e6b47a22dbe5_iv -in travis/secrets.tar.enc -out travis/local.secrets.tar -d;
