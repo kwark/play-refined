@@ -1,19 +1,14 @@
 package be.venneborg.refined.play
 
-import akka.actor.ActorSystem
-import akka.stream.{ActorMaterializer, Materializer}
-import akka.util.ByteString
 import eu.timepit.refined.auto._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
 import org.scalatest.{BeforeAndAfterAll, FunSuite, Matchers}
 import play.api.libs.json._
-import play.api.libs.ws.{BodyWritable, InMemoryBody}
 import play.api.libs.ws.ahc.AhcWSClient
 import play.api.mvc._
 import play.api.routing.sird._
 import play.core.server.NettyServer
-import play.libs.ws.WSBody
 
 class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with BeforeAndAfterAll {
 
@@ -113,9 +108,6 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
   test("post refined json") {
     import RefinedJsonFormats._
     implicit val tcFormat = Json.format[TestClass]
-
-    implicit val jsonBW: BodyWritable[play.api.libs.json.JsValue] = BodyWritable[JsValue](jsValue =>
-      InMemoryBody(ByteString(jsValue.toString())), "application/json")
 
     wsClient.url("http://localhost:9000/json").post(Json.toJson(tc)).futureValue.status shouldBe 200
     wsClient.url("http://localhost:9000/json").post(Json.toJson(tc).transform((__ \ 'rs).json.prune).get).futureValue.status shouldBe 400
