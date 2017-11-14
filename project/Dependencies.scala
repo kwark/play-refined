@@ -4,7 +4,7 @@ object Dependencies {
 
   val refinedVersion = "0.8.4"
   val play25Version  = "2.5.16"
-  val play26Version  = "2.6.6"
+  val play26Version  = "2.6.7"
 
   val refined   =         "eu.timepit"                 %%    "refined"                  % refinedVersion
 
@@ -25,7 +25,7 @@ object Dependencies {
   val play25NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play25Version  % "test"
   val scalaTestPlusPlay25 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "2.0.1"  % "test"
 
-  val testDependencies = Seq(refinedScalacheck, scalaTest, scalaCheck)
+  val testDependencies = Seq(/*refinedScalacheck, */scalaTest, scalaCheck)
   val play26Dependencies = Seq(refined, play26, play26Json, play26NettyServer, scalaTestPlusPlay26, playWsJson)
   val play25Dependencies = Seq(refined, play25, play25Json, play25DataCommons, play25NettyServer, scalaTestPlusPlay25)
 

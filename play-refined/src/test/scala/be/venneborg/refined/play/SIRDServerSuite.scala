@@ -1,5 +1,6 @@
 package be.venneborg.refined.play
 
+import be.venneborg.model._
 import SIRDHelper._
 import eu.timepit.refined.auto._
 import org.scalatest.concurrent.ScalaFutures
@@ -20,7 +21,7 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
   val rlExtractor: PathBindableExtractor[RL] = new PathBindableExtractor[RL]
   val rdExtractor: PathBindableExtractor[RD] = new PathBindableExtractor[RD]
 
-  val tc = TestClass("foo", Some("bar"), 5, Some(Int.MaxValue), Long.MinValue, Some(-1L), 12.0, Some(Double.MaxValue))
+  val tc = TestClass("foo", Some("bar"), "baz", Some("foobar"), 5, Some(Int.MaxValue), Long.MinValue, Some(-1L), 12.0, Some(Double.MaxValue))
 
   val routes: PartialFunction[play.api.mvc.RequestHeader,play.api.mvc.Handler] = {
     // path bindables

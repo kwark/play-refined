@@ -6,6 +6,8 @@ import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FunSuite, Matchers}
 import play.api.data.{Form, Forms}
 import play.api.data.Forms.{mapping, optional}
+import be.venneborg.model._
+import be.venneborg.genmodel._
 
 import scala.language.higherKinds
 
@@ -50,6 +52,8 @@ object RefinedFormsSuite {
     mapping(
       "rs"  -> Forms.of[RS],
       "ors" -> optional(Forms.of[RS]),
+      "rsm"  -> Forms.of[RSM],
+      "orsm" -> optional(Forms.of[RSM]),
       "ri"  -> Forms.of[RI],
       "ori" -> optional(Forms.of[RI]),
       "rl"  -> Forms.of[RL],

@@ -1,6 +1,7 @@
 package controllers
 
-import be.venneborg.refined.play.{RefinedFormsSuite, TestClass, _}
+import be.venneborg.refined.play.RefinedFormsSuite
+import be.venneborg.model._
 import play.api.libs.json.{JsError, Json}
 import play.api.mvc._
 
@@ -25,7 +26,7 @@ class RefinedController(override val controllerComponents: ControllerComponents)
   }
 
   def json() = Action(parse.json) { implicit request =>
-    import RefinedJsonFormats._
+    import be.venneborg.refined.play.RefinedJsonFormats._
     implicit val tcFormat = Json.format[TestClass]
 
     request.body.validate[TestClass].fold(

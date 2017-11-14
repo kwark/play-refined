@@ -1,5 +1,7 @@
 package be.venneborg.refined.play
 
+import be.venneborg.model._
+import be.venneborg.genmodel._
 import eu.timepit.refined.W
 import eu.timepit.refined.collection.NonEmpty
 import eu.timepit.refined.numeric.{Greater, Negative, Positive}

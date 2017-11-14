@@ -1,5 +1,6 @@
 package be.venneborg.refined.play
 
+import be.venneborg.refined.play.RefinedTranslations.Error
 import eu.timepit.refined.api.{RefType, Refined, Validate}
 import play.api.data.FormError
 import play.api.data.format.Formatter
@@ -18,8 +19,9 @@ object RefinedForms {
         case Some(v) => reftype.refine[P](v) match {
           case Right(valueP) => Right(valueP)
           case Left(error) =>
-            val (message, args) = RefinedTranslations.translate(error)
-            Left(Seq(FormError(key, message, args)))
+            Left(RefinedTranslations.translate(error).map { case Error(code, args) =>
+              FormError(key, code, args)
+            })
         }
       }
 
@@ -56,8 +58,9 @@ object RefinedForms {
               reftype.refine[P](convert(v)) match {
                 case Right(valueP) => Right(valueP)
                 case Left(error) =>
-                  val (message, args) = RefinedTranslations.translate(error)
-                  Left(Seq(FormError(key, message, args)))
+                  Left(RefinedTranslations.translate(error).map { case Error(code, args) =>
+                    FormError(key, code, args)
+                  })
               }
             } catch {
               case NonFatal(_) => Left(Seq(FormError(key, errorString, Nil)))

@@ -19,8 +19,8 @@ object RefinedJsonFormats {
         reftype.refine[P](valueT) match {
           case Right(valueP) => JsSuccess(valueP)
           case Left(error) =>
-            val (message, args) = RefinedTranslations.translate(error)
-            JsError(JsonValidationError(message, args))
+            val errors = RefinedTranslations.translate(error)
+            JsError(JsonValidationError(errors.map(_.errorCode), errors.map(_.args): _*))
         }
       })
 

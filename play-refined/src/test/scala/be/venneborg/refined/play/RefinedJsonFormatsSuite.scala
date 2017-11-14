@@ -1,5 +1,7 @@
 package be.venneborg.refined.play
 
+import be.venneborg.model._
+import be.venneborg.genmodel._
 import org.scalatest.{FunSuite, Matchers}
 import play.api.libs.json.{Json, OFormat}
 import org.scalatest.prop.GeneratorDrivenPropertyChecks

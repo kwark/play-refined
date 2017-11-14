@@ -1,20 +1,21 @@
-package scala.be.venneborg.refined.play
+package be.venneborg.test
 
-import be.venneborg.refined.play.{RefinedJsonFormats, TestClass}
+import be.venneborg.refined.play.RefinedJsonFormats._
+import be.venneborg.model._
 import eu.timepit.refined.auto._
 import global.MyApplicationLoader
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
 import org.scalatest.{BeforeAndAfterAll, FunSuite, Matchers}
 import org.scalatestplus.play.{BaseOneServerPerSuite, FakeApplicationFactory, WsScalaTestClient}
-import play.api.{Application, ApplicationLoader, Environment}
 import play.api.libs.json.{Json, __}
 import play.api.libs.ws.WSClient
 import play.api.libs.ws.ahc.AhcWSClient
+import play.api.{Application, ApplicationLoader, Environment}
 
 class PlayServerSuite extends FunSuite with BaseOneServerPerSuite with FakeApplicationFactory with ScalaFutures with Matchers with BeforeAndAfterAll with WsScalaTestClient {
 
-  val tc = TestClass("foo", Some("bar"), 5, Some(Int.MaxValue), Long.MinValue, Some(-1L), 12.0, Some(Double.MaxValue))
+  val tc = TestClass("foo", Some("bar"), "baz", Some("foobar"), 5, Some(Int.MaxValue), Long.MinValue, Some(-1L), 12.0, Some(Double.MaxValue))
 
   test("refined string in path") {
     wsUrl("/strings/foo").get().futureValue.status shouldBe 200
@@ -71,7 +72,6 @@ class PlayServerSuite extends FunSuite with BaseOneServerPerSuite with FakeAppli
   }
 
   test("post refined json") {
-    import RefinedJsonFormats._
     implicit val tcFormat = Json.format[TestClass]
 
     wsUrl("/json").post(Json.toJson(tc)).futureValue.status shouldBe 200

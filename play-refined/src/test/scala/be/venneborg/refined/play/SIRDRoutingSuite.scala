@@ -1,5 +1,6 @@
 package be.venneborg.refined.play
 
+import be.venneborg.model._
 import SIRDHelper.reqHeaderAt
 
 import akka.actor.ActorSystem
