@@ -16,6 +16,8 @@ object model {
   type RL = Long Refined Negative
   type RD = Double Refined Greater[W.`10.0`.T]
 
+  type RMAP = Map[RSM, RI]
+
   case class TestClass(rs: RS, ors: Option[RS],
                        rsm: RSM, orsm: Option[RSM],
                        ri: RI, ori: Option[RI],
