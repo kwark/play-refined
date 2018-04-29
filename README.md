@@ -11,7 +11,7 @@ It allows you to easily use refined types with Play.
 Both scala 2.11 & 2.12 and Play 2.5 & 2.6 are supported.
 You'll also need to use Java8.
 
-The library supports the following functionality:
+The library provides the following functionality:
 
 * boilerplate-free JSON serialization/deserialization of refined types
 * boilerplate-free form binding/unbinding of refined types
