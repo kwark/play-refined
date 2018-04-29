@@ -52,9 +52,9 @@ object DefaultRefinedTranslations extends RefinedTranslations {
   val predicateFailed: Regex = "Predicate failed: (.*).".r
 
   val sizePredicateFailed: Regex = "Predicate taking size\\(.*\\) = \\d+ failed: (.*)".r
-  val rightFailed: Regex = "Right predicate of \\(.*\\) failed: (Predicate .*)".r
-  val leftFailed: Regex = "Left predicate of \\(.*\\) failed: (Predicate .*)".r
-  val bothFailed: Regex = "Both predicates of \\(.*\\) failed. Left: (Predicate .*) Right: (Predicate .*)".r
+  val rightFailed: Regex = "Right predicate of \\(.*?\\) failed: (Predicate .*)".r
+  val leftFailed: Regex = "Left predicate of \\(.*?\\) failed: (Predicate .*)".r
+  val bothFailed: Regex = "Both predicates of \\(.*?\\) failed. Left: (Predicate .*) Right: (Predicate .*)".r
 
   val urlPredicateFailed: Regex = "Url predicate failed: (.*): .*".r
   val uuidPredicateFailed: Regex = "Uuid predicate failed: Invalid UUID string: .*".r

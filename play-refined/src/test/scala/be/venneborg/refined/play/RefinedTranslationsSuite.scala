@@ -114,10 +114,10 @@ class RefinedTranslationsSuite extends FunSuite with Matchers {
       Seq(Error("error.invalid", Seq("not starting with: @")), Error("error.maxLength", Seq("4"))))
 
     //Predicate failed: ("foo".startsWith("@") && !(3 > 4) && true).
-    checkTranslation[String, AllOf[StartsWith[W.`"@"`.T] :: MaxSize[W.`4`.T] :: HNil]]("foo", "error.invalid", Seq("""("foo".startsWith("@") && !(3 > 4) && true)"""))
+    checkTranslation[String, AllOf[StartsWith[W.`"@"`.T] :: MaxSize[W.`4`.T] :: HNil]]("foo", "error.invalid", Seq("""("foo".startsWith("@") && (!(3 < 0) && !(3 > 4)) && true)"""))
 
     //Predicate failed: ("foobar".startsWith("@") && !(6 > 4) && true).
-    checkTranslation[String, AllOf[StartsWith[W.`"@"`.T] :: MaxSize[W.`4`.T] :: HNil]]("foobar", "error.invalid", Seq("""("foobar".startsWith("@") && !(6 > 4) && true)"""))
+    checkTranslation[String, AllOf[StartsWith[W.`"@"`.T] :: MaxSize[W.`4`.T] :: HNil]]("foobar", "error.invalid", Seq("""("foobar".startsWith("@") && (!(6 < 0) && !(6 > 4)) && true)"""))
   }
 
   def checkTranslation[T, P](value: T, expectedMessage: String, expectedArgs: Seq[String])
