@@ -11,6 +11,7 @@ import play.api.libs.ws.ahc.AhcWSClient
 import play.api.mvc._
 import play.api.routing.sird._
 import play.core.server.NettyServer
+import play.core.server.Server
 
 class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with BeforeAndAfterAll {
 
@@ -115,12 +116,12 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
     wsClient.url("http://localhost:9000/json").post(Json.toJson(tc).transform((__ \ 'rs).json.prune).get).futureValue.status shouldBe 400
   }
 
-  var server: Option[NettyServer] = None
+  var server: Option[Server] = None
   var wsClient: AhcWSClient = _
 
   override protected def beforeAll() = {
     wsClient = AhcWSClient()(null) //no need for a materializer
-    server = Some(NettyServer.fromRouter()(routes))
+    server = Some(NettyServer.fromRouterWithComponents()(_ => routes))
   }
 
   override protected def afterAll() = {
