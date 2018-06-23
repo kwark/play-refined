@@ -7,6 +7,8 @@ import play.api.libs.typedmap.TypedMap
 import play.api.libs.ws.JsonBodyWritables
 import play.api.mvc.request.RequestTarget
 import play.api.mvc._
+import play.api.routing.Router.Routes
+import play.core.server.{NettyServer, Server}
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -27,6 +29,8 @@ object SIRDHelper {
   implicit val jsValueBodyWritable = JsonBodyWritables.writeableOf_JsValue
 
   def shutdown(): Future[Any] = actorSystem.terminate()
+
+  def startWithRoutes(routes: Routes): Server = NettyServer.fromRouterWithComponents()(_ => routes)
 
   def reqHeaderAt(_method: String, _uri: String) = new RequestHeader {
 

@@ -121,7 +121,7 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
 
   override protected def beforeAll() = {
     wsClient = AhcWSClient()(null) //no need for a materializer
-    server = Some(NettyServer.fromRouterWithComponents()(_ => routes))
+    server = Some(startWithRoutes(routes))
   }
 
   override protected def afterAll() = {
