@@ -2,6 +2,8 @@ package be.venneborg.refined.play
 
 import play.api.libs.json.JsValue
 import play.api.mvc._
+import play.api.routing.Router.Routes
+import play.core.server.NettyServer
 
 import scala.concurrent.Future
 
@@ -14,6 +16,8 @@ object SIRDHelper {
   val jsonParser: BodyParser[JsValue] = BodyParsers.parse.json
 
   def shutdown(): Future[Unit] = Future.successful(())
+
+  def startWithRoutes(routes: Routes): NettyServer = NettyServer.fromRouter()(routes)
 
   def reqHeaderAt(_method: String, _uri: String) = new RequestHeader {
 

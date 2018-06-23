@@ -36,10 +36,30 @@ inScope(ThisScope.copy(project = Global))(List(
 
 //set source dir to source dir in commonPlayModule
 val sourceScalaDir =  (baseDirectory in ThisBuild)( b => Seq( b / "play-refined/src/main/scala"))
+val source26ScalaDir =  (baseDirectory in ThisBuild)( b => Seq( b / "play26-refined/src/main/scala"))
 val sourceTestDir =   (baseDirectory in ThisBuild)( b => Seq( b / "play-refined/src/test/scala" ))
+val source26TestDir =  (baseDirectory in ThisBuild)( b => Seq( b / "play26-refined/src/test/scala"))
 val resourceTestDir = (baseDirectory in ThisBuild)( b => Seq( b / "play-refined/src/test/resources" ))
 
 import Dependencies._
+
+lazy val `play27-refined` = project
+  .settings(
+    name := "play27-refined",
+    organization := "be.venneborg"
+  )
+  .settings(unmanagedSourceDirectories in Compile ++= (sourceScalaDir.value ++ source26ScalaDir.value))
+  .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value ++ source26TestDir.value)
+  .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
+  .settings(libraryDependencies := {
+    CrossVersion.partialVersion(scalaVersion.value) match {
+      case Some((2, scalaMajor)) if scalaMajor >= 13 =>
+        libraryDependencies.value ++ play27Dependencies ++ testDependencies ++ Seq(refined_213)
+      case _ =>
+        libraryDependencies.value ++ play27Dependencies ++ testDependencies ++ Seq(refined)
+    }
+  })
+  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value)
 
 lazy val `play26-refined` = project
   .settings(
@@ -50,7 +70,7 @@ lazy val `play26-refined` = project
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value )
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
   .settings(libraryDependencies := play26Dependencies ++ testDependencies)
-  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value)
+  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(v => v.startsWith("2.11") || v.startsWith("2.12")))
 
 lazy val `play25-refined` = project
   .settings(
@@ -74,4 +94,4 @@ lazy val example = (project in file("example"))
 lazy val root = (project in file("."))
   .enablePlugins(CrossPerProjectPlugin)
   .settings(publishArtifact := false)
-  .aggregate(`play26-refined`, `play25-refined`, example)
+  .aggregate(`play27-refined`, `play26-refined`, `play25-refined`, example)
