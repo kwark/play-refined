@@ -30,6 +30,7 @@ inScope(ThisScope.copy(project = Global))(List(
   pgpSecretRing := file("./travis/local.secring.asc"),
 
   releaseEarlyWith := BintrayPublisher,
+  releaseEarlyEnableSyncToMaven:= false,
   publishMavenStyle := true,
   publishArtifact in Test := false
 ))

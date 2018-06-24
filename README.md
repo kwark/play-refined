@@ -25,16 +25,16 @@ Versions: The table below lists the versions and their main dependencies
 
 |Artifact to use |Version | Scala  |Play  |
 |----------------|--------|--------|------|
-|play25-refined  |0.2.0   |2.11.x  |2.5.x |
-|play26-refined  |0.2.0   |2.11.x  |2.6.x |
-|play26-refined  |0.2.0   |2.12.x  |2.6.x |
-|play27-refined  |0.2.0   |2.11.x  |2.7.0-M1 |
-|play27-refined  |0.2.0   |2.12.x  |2.7.0-M1 |
-|play27-refined  |0.2.0   |2.13.0-M3  |2.7.0-M1 |
+|play25-refined  |0.3.0   |2.11.x  |2.5.x |
+|play26-refined  |0.3.0   |2.11.x  |2.6.x |
+|play26-refined  |0.3.0   |2.12.x  |2.6.x |
+|play27-refined  |0.3.0   |2.11.x  |2.7.0-M1 |
+|play27-refined  |0.3.0   |2.12.x  |2.7.0-M1 |
+|play27-refined  |0.3.0   |2.13.0-M3  |2.7.0-M1 |
 
 Depending on the artifact and version you need to add the correct dependency to your SBT dependencies:
 
-```libraryDependencies += "be.venneborg" %% "play26-refined" % 0.2.0```
+```libraryDependencies += "be.venneborg" %% "play26-refined" % 0.3.0```
 
 ### Json Formatters
 
