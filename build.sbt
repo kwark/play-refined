@@ -30,7 +30,6 @@ inScope(ThisScope.copy(project = Global))(List(
   pgpSecretRing := file("./travis/local.secring.asc"),
 
   releaseEarlyWith := BintrayPublisher,
-  releaseEarlyEnableSyncToMaven:= false,
   publishMavenStyle := true,
   publishArtifact in Test := false
 ))
@@ -49,6 +48,7 @@ lazy val `play27-refined` = project
     name := "play27-refined",
     organization := "be.venneborg"
   )
+  .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= (sourceScalaDir.value ++ source26ScalaDir.value))
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value ++ source26TestDir.value)
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
@@ -67,6 +67,7 @@ lazy val `play26-refined` = project
     name := "play26-refined",
     organization := "be.venneborg"
   )
+  .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value )
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value )
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
@@ -78,6 +79,7 @@ lazy val `play25-refined` = project
     name := "play25-refined",
     organization := "be.venneborg"
   )
+  .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value )
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value )
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
@@ -87,6 +89,7 @@ lazy val `play25-refined` = project
 
 lazy val example = (project in file("example"))
   .enablePlugins(Play)
+  .settings()
   .settings(publishArtifact := false)
   .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(_ startsWith "2.12"))
   .settings(scalaVersion := (crossScalaVersions in ThisBuild).value.find(_ startsWith "2.12").get)
