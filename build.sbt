@@ -31,7 +31,7 @@ inThisBuild(List(
 
   releaseEarlyWith := BintrayPublisher,
   publishMavenStyle := true,
-  publishArtifact in Test := false
+  publishArtifact in Test := false,
   parallelExecution := false
 ))
 
