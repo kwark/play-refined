@@ -129,6 +129,6 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
     shutdown().futureValue
   }
 
-  override implicit def patienceConfig: PatienceConfig = PatienceConfig(Span(2, Seconds))
+  override implicit def patienceConfig: PatienceConfig = PatienceConfig(Span(5, Seconds))
 
 }

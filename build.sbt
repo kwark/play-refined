@@ -98,4 +98,5 @@ lazy val example = (project in file("example"))
 
 lazy val root = (project in file("."))
   .settings(publishArtifact := false)
+  .settings(crossScalaVersions := Seq.empty)
   .aggregate(`play27-refined`, `play26-refined`, `play25-refined`, example)
