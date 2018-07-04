@@ -20,7 +20,7 @@ scalacOptions in ThisBuild ++= Seq(
   "-Ydelambdafy:method"
 )
 
-inScope(ThisScope.copy(project = Global))(List(
+inThisBuild(List(
   licenses := Seq(("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.txt"))),
   homepage := Some(url(s"https://github.com/kwark/play-refined")),
   scmInfo := Some(ScmInfo(url(s"https://github.com/kwark/play-refined"), "scm:git:git@github.com:kwark/play-refined.git")),
@@ -96,6 +96,5 @@ lazy val example = (project in file("example"))
   .dependsOn(`play26-refined` % "test->test;compile->test,compile")
 
 lazy val root = (project in file("."))
-  .enablePlugins(CrossPerProjectPlugin)
   .settings(publishArtifact := false)
   .aggregate(`play27-refined`, `play26-refined`, `play25-refined`, example)
