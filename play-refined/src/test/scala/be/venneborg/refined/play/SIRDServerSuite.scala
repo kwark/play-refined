@@ -10,7 +10,6 @@ import play.api.libs.json._
 import play.api.libs.ws.ahc.AhcWSClient
 import play.api.mvc._
 import play.api.routing.sird._
-import play.core.server.NettyServer
 import play.core.server.Server
 
 class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with BeforeAndAfterAll {

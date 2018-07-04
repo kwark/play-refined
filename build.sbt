@@ -32,6 +32,7 @@ inThisBuild(List(
   releaseEarlyWith := BintrayPublisher,
   publishMavenStyle := true,
   publishArtifact in Test := false
+  parallelExecution := false
 ))
 
 //set source dir to source dir in commonPlayModule
