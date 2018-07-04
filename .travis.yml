@@ -5,15 +5,16 @@ scala:
 - 2.13.0-M3
 - 2.12.6
 script:
-- sbt "+++ $TRAVIS_SCALA_VERSION test"
+- sbt "++ $TRAVIS_SCALA_VERSION test"
 jdk:
 - oraclejdk8
 cache:
   directories:
+  - $HOME/.coursier
   - $HOME/.ivy2/cache
-  - $HOME/.sbt
+  - $HOME/.sbt/boot
 after_success:
-- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt "+++$TRAVIS_SCALA_VERSION releaseEarly";
+- if [ $TRAVIS_PULL_REQUEST = 'false' ]; then sbt "++ $TRAVIS_SCALA_VERSION releaseEarly";
   fi
 - find $HOME/.sbt -name "*.lock" | xargs rm
 - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
