@@ -4,7 +4,7 @@ object Dependencies {
 
   val refinedVersion = "0.9.2"
   val play25Version  = "2.5.18"
-  val play26Version  = "2.6.17"
+  val play26Version  = "2.6.20"
   val play27Version  = "2.7.0-M2"
 
   val refined   =         "eu.timepit"                 %%    "refined"                  % refinedVersion
