@@ -1,4 +1,4 @@
-addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.20")
+addSbtPlugin("com.typesafe.play" % "sbt-plugin" % "2.6.21")
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0-M3")
 addSbtPlugin("org.scoverage" % "sbt-coveralls" % "1.2.6")
 addSbtPlugin("ch.epfl.scala" % "sbt-release-early" % "2.1.1")
