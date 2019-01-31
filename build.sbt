@@ -53,14 +53,7 @@ lazy val `play27-refined` = project
   .settings(unmanagedSourceDirectories in Compile ++= (sourceScalaDir.value ++ source26ScalaDir.value))
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value ++ source26TestDir.value)
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
-  .settings(libraryDependencies := {
-    CrossVersion.partialVersion(scalaVersion.value) match {
-      case Some((2, scalaMajor)) if scalaMajor >= 13 =>
-        libraryDependencies.value ++ play27Dependencies ++ testDependencies ++ Seq(refined_213)
-      case _ =>
-        libraryDependencies.value ++ play27Dependencies ++ testDependencies ++ Seq(refined)
-    }
-  })
+  .settings(libraryDependencies := play27Dependencies ++ testDependencies)
   .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value)
 
 lazy val `play26-refined` = project

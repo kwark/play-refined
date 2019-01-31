@@ -8,7 +8,7 @@ using the [Refined library](https://github.com/fthomas/refined) with Lightbend's
 
 It allows you to easily use refined types with Play.  
 
-Both scala 2.11 & 2.12 and Play 2.5 & 2.6 are supported.
+Both scala 2.11 & 2.12 and Play 2.5 & 2.6 & 2.7 are supported.
 You'll also need to use Java8.
 
 The library provides the following functionality:
@@ -28,9 +28,8 @@ Versions: The table below lists the versions and their main dependencies
 |play25-refined  |0.3.0   |2.11.x  |2.5.x |
 |play26-refined  |0.3.0   |2.11.x  |2.6.x |
 |play26-refined  |0.3.0   |2.12.x  |2.6.x |
-|play27-refined  |0.3.0   |2.11.x  |2.7.0-M1 |
-|play27-refined  |0.3.0   |2.12.x  |2.7.0-M1 |
-|play27-refined  |0.3.0   |2.13.0-M3  |2.7.0-M1 |
+|play27-refined  |0.3.0   |2.11.x  |2.7.x |
+|play27-refined  |0.3.0   |2.12.x  |2.7.x |
 
 Depending on the artifact and version you need to add the correct dependency to your SBT dependencies:
 
