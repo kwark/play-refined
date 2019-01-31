@@ -57,9 +57,7 @@ class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with Befo
   }
 
   test("refined string in path") {
-    val value = wsClient.url("http://localhost:9000/strings/foo").get().futureValue
-    println(value)
-    value.status shouldBe 200
+    wsClient.url("http://localhost:9000/strings/foo").get().futureValue.status shouldBe 200
     wsClient.url("http://localhost:9000/strings/").get().futureValue.status shouldBe 404
   }
 
