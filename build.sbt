@@ -7,14 +7,14 @@ organization in ThisBuild := "be.venneborg"
 scalacOptions in ThisBuild ++= Seq(
   "-target:jvm-1.8",
   "-encoding", "UTF-8",
-  "-deprecation", // warning and location for usages of deprecated APIs
+//  "-deprecation", // warning and location for usages of deprecated APIs
   "-feature", // warning and location for usages of features that should be imported explicitly
   "-unchecked", // additional warnings where generated code depends on assumptions
   //  "-Xlint", // recommended additional warnings
-  "-Ywarn-adapted-args", // Warn if an argument list is modified to match the receiver
-  "-Ywarn-inaccessible",
+//  "-Ywarn-adapted-args", // Warn if an argument list is modified to match the receiver
+//  "-Ywarn-inaccessible",
   "-Ywarn-dead-code",
-  "-Xfatal-warnings",
+//  "-Xfatal-warnings",
   "-language:reflectiveCalls",
   "-language:experimental.macros",
   "-Ydelambdafy:method"

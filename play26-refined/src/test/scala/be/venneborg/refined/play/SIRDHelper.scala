@@ -48,7 +48,7 @@ object SIRDHelper {
           Map(_uri.split('?').drop(1)(0).split('&').toSeq.map {
             case regex(k, v) => k -> (if (v != null) v else "")
           }: _*
-          ).mapValues(List(_))
+          ).map { case (k, v) => k -> List(v) }.toMap
         } else Map.empty
       }
     )
