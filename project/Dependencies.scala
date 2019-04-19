@@ -22,7 +22,7 @@ object Dependencies {
   val play25              = "com.typesafe.play"          %%    "play"                     % play25Version
   val play25DataCommons   = "com.typesafe.play"          %%    "play-datacommons"         % play25Version
   val play25NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play25Version  % "test"
-  val scalaTestPlusPlay25 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "2.0.1"  % "test"
+  val scalaTestPlusPlay25 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "4.0.2"  % "test"
   val play25Ws            = "com.typesafe.play"          %%    "play-ws"                  % play25Version  % "test"
   val play25Test          = "com.typesafe.play"          %%    "play-test"                % play25Version  % "test"
 
