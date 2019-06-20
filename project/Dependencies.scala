@@ -32,8 +32,10 @@ object Dependencies {
   val play27NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play27Version  % "test"
   val scalaTestPlusPlay27 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "4.0.1"  % "test"
 
+  val play27NettyUnix     = "io.netty" % "netty-transport-native-unix-common" % "4.1.34.Final" % "test"
+
   val testDependencies = Seq(scalaCheck)
-  val play27Dependencies = Seq(refined, play27, play27Json, play27NettyServer, scalaTestPlusPlay27, play27WsJson)
+  val play27Dependencies = Seq(refined, play27, play27Json, play27NettyServer, scalaTestPlusPlay27, play27WsJson, play27NettyUnix)
   val play26Dependencies = Seq(refined, play26, play26Json, play26NettyServer, scalaTestPlusPlay26, play26WsJson)
   val play25Dependencies = Seq(refined, play25, play25Json, play25DataCommons, play25NettyServer, scalaTestPlusPlay25, play25Test, play25Ws)
 
