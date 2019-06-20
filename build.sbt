@@ -49,6 +49,7 @@ lazy val `play27-refined` = project
     name := "play27-refined",
     organization := "be.venneborg"
   )
+  .settings(fork in Test := scalaBinaryVersion.value == "2.11") // see https://github.com/sbt/sbt/issues/4609
   .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= (sourceScalaDir.value ++ source26ScalaDir.value))
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value ++ source26TestDir.value)
