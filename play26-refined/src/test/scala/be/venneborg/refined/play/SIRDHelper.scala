@@ -8,7 +8,7 @@ import play.api.libs.ws.JsonBodyWritables
 import play.api.mvc.request.RequestTarget
 import play.api.mvc._
 import play.api.routing.Router.Routes
-import play.core.server.{NettyServer, Server}
+import play.core.server.{NettyServer, Server, ServerConfig}
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -30,7 +30,7 @@ object SIRDHelper {
 
   def shutdown(): Future[Any] = actorSystem.terminate()
 
-  def startWithRoutes(routes: Routes): Server = NettyServer.fromRouterWithComponents()(_ => routes)
+  def startWithRoutes(routes: Routes): Server = NettyServer.fromRouterWithComponents(ServerConfig(port = Some(0)))(_ => routes)
 
   def reqHeaderAt(_method: String, _uri: String) = new RequestHeader {
 
