@@ -7,7 +7,7 @@ scala:
 script:
 - sbt "++ $TRAVIS_SCALA_VERSION test"
 jdk:
-- oraclejdk8
+- openjdk8
 cache:
   directories:
   - $HOME/.coursier
