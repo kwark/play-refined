@@ -26,7 +26,7 @@ object Dependencies {
   val play25Ws            = "com.typesafe.play"          %%    "play-ws"                  % play25Version  % "test"
   val play25Test          = "com.typesafe.play"          %%    "play-test"                % play25Version  % "test"
 
-  val play27WsJson        = "com.typesafe.play"          %%    "play-ws-standalone-json"  % "2.0.6"  % "test"
+  val play27WsJson        = "com.typesafe.play"          %%    "play-ws-standalone-json"  % "2.0.8"  % "test"
   val play27Json          = "com.typesafe.play"          %%    "play-json"                % "2.7.4"
   val play27              = "com.typesafe.play"          %%    "play"                     % play27Version
   val play27NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play27Version  % "test"
