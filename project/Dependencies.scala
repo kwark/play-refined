@@ -10,7 +10,7 @@ object Dependencies {
   val refined   =         "eu.timepit"                 %%    "refined"                  % refinedVersion
 
   val refinedScalacheck = "eu.timepit"                 %%    "refined-scalacheck"       % refinedVersion   % "test"
-  val scalaCheck        = "org.scalacheck"             %%    "scalacheck"               % "1.14.2"  % "test"
+  val scalaCheck        = "org.scalacheck"             %%    "scalacheck"               % "1.14.3"  % "test"
 
   val play26WsJson        = "com.typesafe.play"          %%    "play-ws-standalone-json"  % "2.0.7"  % "test"
   val play26Json          = "com.typesafe.play"          %%    "play-json"                % "2.6.14"
