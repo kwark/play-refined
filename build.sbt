@@ -1,8 +1,5 @@
-import com.typesafe.sbt.SbtPgp.autoImportImpl.pgpSecretRing
 import sbt.Keys.publishArtifact
 import sbt.file
-
-organization in ThisBuild := "be.venneborg"
 
 scalacOptions in ThisBuild ++= Seq(
   "-target:jvm-1.8",
@@ -25,14 +22,15 @@ inThisBuild(List(
   homepage := Some(url(s"https://github.com/kwark/play-refined")),
   scmInfo := Some(ScmInfo(url(s"https://github.com/kwark/play-refined"), "scm:git:git@github.com:kwark/play-refined.git")),
   developers := List(Developer("kwark", "Peter Mortier", "", url("https://github.com/kwark"))),
+  organization := "be.venneborg",
 
-  pgpPublicRing := file("./travis/local.pubring.asc"),
-  pgpSecretRing := file("./travis/local.secring.asc"),
+//  pgpPublicRing := file("./travis/local.pubring.asc"),
+//  pgpSecretRing := file("./travis/local.secring.asc"),
 
-  releaseEarlyWith := BintrayPublisher,
-  publishMavenStyle := true,
   publishArtifact in Test := false,
-  parallelExecution := false
+  parallelExecution := false,
+
+  crossScalaVersions := List("2.12.11", "2.13.3")
 ))
 
 //set source dir to source dir in commonPlayModule
@@ -47,7 +45,6 @@ lazy val `play28-refined` = project
     name := "play28-refined",
     organization := "be.venneborg"
   )
-  .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value)
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value)
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
@@ -60,7 +57,6 @@ lazy val `play27-refined` = project
     name := "play27-refined",
     organization := "be.venneborg"
   )
-  .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value)
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value)
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
@@ -72,7 +68,6 @@ lazy val `play26-refined` = project
     name := "play26-refined",
     organization := "be.venneborg"
   )
-  .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value )
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value )
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
@@ -87,7 +82,7 @@ lazy val example = (project in file("example"))
   .settings(scalaVersion := (crossScalaVersions in ThisBuild).value.find(_ startsWith "2.12").get)
   .dependsOn(`play26-refined` % "test->test;compile->test,compile")
 
-lazy val root = (project in file("."))
+lazy val `play-refined` = (project in file("."))
   .settings(publishArtifact := false)
   .settings(crossScalaVersions := Seq.empty)
   .aggregate(`play28-refined`, `play27-refined`, `play26-refined`, example)

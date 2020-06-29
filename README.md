@@ -32,7 +32,7 @@ Versions: The table below lists the versions and their main dependencies.
 |play27-refined  |0.6.0   |            | ✓          | ✓          |2.7.x  | 0.9.14  |
 |play28-refined  |0.6.0   |            | ✓          | ✓          |2.8.x  | 0.9.14  |
 
-Starting from version `0.6.0`, play-refined, support for scala 2.11 was dropped.
+Starting from version `0.6.0` support for scala 2.11 was dropped.
 
 Depending on the artifact and version you need to add the correct dependency to your SBT dependencies:
 
