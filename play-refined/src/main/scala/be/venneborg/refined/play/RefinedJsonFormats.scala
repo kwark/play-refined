@@ -1,10 +1,10 @@
 package be.venneborg.refined.play
 
-import eu.timepit.refined.api.{RefType, Refined, Validate}
+import eu.timepit.refined.api.{RefType, Validate}
 import play.api.libs.json._
 
-import scala.collection.immutable.Map
 import scala.language.higherKinds
+import scala.collection.immutable.Map
 
 object RefinedJsonFormats {
 
@@ -26,9 +26,9 @@ object RefinedJsonFormats {
       })
 
   implicit def formatRefined[T, P, F[_, _]](implicit writesT: Writes[T],
-                                             readsT: Reads[T],
-                                             validate: Validate[T, P],
-                                             reftype: RefType[F]): Format[F[T, P]] =
+                                            readsT: Reads[T],
+                                            validate: Validate[T, P],
+                                            reftype: RefType[F]): Format[F[T, P]] =
     Format[F[T, P]](readRefined[T, P, F], writeRefined[T, P, F])
 
   implicit def refinedMapFormat[V, P, F[String, _]](implicit
@@ -38,7 +38,7 @@ object RefinedJsonFormats {
                                                     reftype: RefType[F]): Format[Map[F[String, P], V]] = new Format[Map[F[String, P], V]] {
 
     override def writes(o: Map[F[String, P], V]): JsValue = OWrites[Map[F[String, P], V]] { ts =>
-      JsObject(ts.map { case (key, value) => reftype.unwrap(key) -> writesValue.writes(value)})
+      JsObject(ts.map { case (key, value) => reftype.unwrap(key) -> writesValue.writes(value) })
     }.writes(o)
 
     override def reads(json: JsValue): JsResult[Map[F[String, P], V]] = Reads.mapReads(

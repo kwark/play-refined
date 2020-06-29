@@ -10,7 +10,7 @@ object RefinedHelper {
     bound.right.flatMap { v =>
       reftype.refine[P](v) match {
         case Right(valueP) => Right(valueP)
-        case l @ Left(_)   => l
+        case l@Left(_) => l
       }
     }
   }
