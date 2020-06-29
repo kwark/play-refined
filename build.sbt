@@ -49,7 +49,6 @@ lazy val `play27-refined` = project
     name := "play27-refined",
     organization := "be.venneborg"
   )
-  .settings(fork in Test := scalaBinaryVersion.value == "2.11") // see https://github.com/sbt/sbt/issues/4609
   .settings(releaseEarlyEnableSyncToMaven := false)
   .settings(unmanagedSourceDirectories in Compile ++= (sourceScalaDir.value ++ source26ScalaDir.value))
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value ++ source26TestDir.value)
@@ -67,20 +66,7 @@ lazy val `play26-refined` = project
   .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value )
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
   .settings(libraryDependencies := play26Dependencies ++ testDependencies)
-  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(v => v.startsWith("2.11") || v.startsWith("2.12")))
-
-lazy val `play25-refined` = project
-  .settings(
-    name := "play25-refined",
-    organization := "be.venneborg"
-  )
-  .settings(releaseEarlyEnableSyncToMaven := false)
-  .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value )
-  .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value )
-  .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
-  .settings(libraryDependencies := play25Dependencies ++ testDependencies)
-  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(_ startsWith "2.11"))
-  .settings(scalaVersion := (crossScalaVersions in ThisBuild).value.find(_ startsWith "2.11").get)
+  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(_.startsWith("2.12")))
 
 lazy val example = (project in file("example"))
   .enablePlugins(Play)
@@ -93,4 +79,4 @@ lazy val example = (project in file("example"))
 lazy val root = (project in file("."))
   .settings(publishArtifact := false)
   .settings(crossScalaVersions := Seq.empty)
-  .aggregate(`play27-refined`, `play26-refined`, `play25-refined`, example)
+  .aggregate(`play27-refined`, `play26-refined`, example)
