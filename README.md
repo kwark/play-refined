@@ -8,8 +8,8 @@ using the [Refined library](https://github.com/fthomas/refined) with Lightbend's
 
 It allows you to easily use refined types with Play.  
 
-Scala 2.11, 2.12, 2.13 and Play 2.5 & 2.6 & 2.7 are supported.
-You'll also need to use Java8.
+Scala 2.11, 2.12, 2.13 and Play 2.5, 2.6, 2.7 & 2.8  are supported.
+You'll also need to use Java8 or later.
 
 The library provides the following functionality:
 
@@ -21,17 +21,22 @@ The library provides the following functionality:
 
 ## Usage
 
-Versions: The table below lists the versions and their main dependencies
+Versions: The table below lists the versions and their main dependencies.
 
 |Artifact to use |Version | Scala 2.11 | Scala 2.12 | Scala 2.13 | Play  | Refined |
 |----------------|--------|------------|------------|------------|-------|---------|
 |play25-refined  |0.5.0   | ✓          |            |            |2.5.x  | 0.9.8   |
 |play26-refined  |0.5.0   | ✓          | ✓          |            |2.6.x  | 0.9.8   |
+|play26-refined  |0.6.0   |            | ✓          |            |2.6.x  | 0.9.14  |
 |play27-refined  |0.5.0   | ✓          | ✓          | ✓          |2.7.x  | 0.9.8   |
+|play27-refined  |0.6.0   |            | ✓          | ✓          |2.7.x  | 0.9.14  |
+|play28-refined  |0.6.0   |            | ✓          | ✓          |2.8.x  | 0.9.14  |
+
+Starting from version `0.6.0`, play-refined, support for scala 2.11 was dropped.
 
 Depending on the artifact and version you need to add the correct dependency to your SBT dependencies:
 
-```libraryDependencies += "be.venneborg" %% "play26-refined" % <version>```
+```libraryDependencies += "be.venneborg" %% "play27-refined" % <version>```
 
 ### Json Formatters
 

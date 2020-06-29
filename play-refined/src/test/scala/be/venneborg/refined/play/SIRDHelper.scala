@@ -5,8 +5,8 @@ import akka.stream.{ActorMaterializer, Materializer}
 import play.api.libs.json.JsValue
 import play.api.libs.typedmap.TypedMap
 import play.api.libs.ws.JsonBodyWritables
-import play.api.mvc.request.RequestTarget
 import play.api.mvc._
+import play.api.mvc.request.RequestTarget
 import play.api.routing.Router.Routes
 import play.core.server.{NettyServer, Server, ServerConfig}
 

@@ -37,12 +37,23 @@ inThisBuild(List(
 
 //set source dir to source dir in commonPlayModule
 val sourceScalaDir =  (baseDirectory in ThisBuild)( b => Seq( b / "play-refined/src/main/scala"))
-val source26ScalaDir =  (baseDirectory in ThisBuild)( b => Seq( b / "play26-refined/src/main/scala"))
 val sourceTestDir =   (baseDirectory in ThisBuild)( b => Seq( b / "play-refined/src/test/scala" ))
-val source26TestDir =  (baseDirectory in ThisBuild)( b => Seq( b / "play26-refined/src/test/scala"))
 val resourceTestDir = (baseDirectory in ThisBuild)( b => Seq( b / "play-refined/src/test/resources" ))
 
 import Dependencies._
+
+lazy val `play28-refined` = project
+  .settings(
+    name := "play28-refined",
+    organization := "be.venneborg"
+  )
+  .settings(releaseEarlyEnableSyncToMaven := false)
+  .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value)
+  .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value)
+  .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
+  .settings(libraryDependencies := play28Dependencies ++ testDependencies)
+  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value)
+
 
 lazy val `play27-refined` = project
   .settings(
@@ -50,8 +61,8 @@ lazy val `play27-refined` = project
     organization := "be.venneborg"
   )
   .settings(releaseEarlyEnableSyncToMaven := false)
-  .settings(unmanagedSourceDirectories in Compile ++= (sourceScalaDir.value ++ source26ScalaDir.value))
-  .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value ++ source26TestDir.value)
+  .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value)
+  .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value)
   .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
   .settings(libraryDependencies := play27Dependencies ++ testDependencies)
   .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value)
@@ -69,7 +80,7 @@ lazy val `play26-refined` = project
   .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(_.startsWith("2.12")))
 
 lazy val example = (project in file("example"))
-  .enablePlugins(Play)
+  .enablePlugins(PlayWeb)
   .settings()
   .settings(publishArtifact := false)
   .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(_ startsWith "2.12"))
@@ -79,4 +90,4 @@ lazy val example = (project in file("example"))
 lazy val root = (project in file("."))
   .settings(publishArtifact := false)
   .settings(crossScalaVersions := Seq.empty)
-  .aggregate(`play27-refined`, `play26-refined`, example)
+  .aggregate(`play28-refined`, `play27-refined`, `play26-refined`, example)
