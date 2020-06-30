@@ -1,7 +1,7 @@
 # Play-refined
 
-[![Build Status](https://travis-ci.org/kwark/play-refined.svg?branch=master)](https://travis-ci.org/kwark/play-refined)
-[![Maven version](https://img.shields.io/maven-central/v/be.venneborg/play26-refined_2.12.svg)](https://maven-badges.herokuapp.com/maven-central/be.venneborg/play26-refined_2.12)
+![](https://github.com/kwark/play-refined/workflows/test/badge.svg)
+[![Maven version](https://img.shields.io/maven-central/v/be.venneborg/play28-refined_2.13.svg)](https://maven-badges.herokuapp.com/maven-central/be.venneborg/play28-refined_2.13)
 
 Play-refined is a small scala library that enables boilerplate-free integration of refinement types 
 using the [Refined library](https://github.com/fthomas/refined) with Lightbend's [Play framework](https://www.playframework.com/)
