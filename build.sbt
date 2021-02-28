@@ -24,13 +24,10 @@ inThisBuild(List(
   developers := List(Developer("kwark", "Peter Mortier", "", url("https://github.com/kwark"))),
   organization := "be.venneborg",
 
-//  pgpPublicRing := file("./travis/local.pubring.asc"),
-//  pgpSecretRing := file("./travis/local.secring.asc"),
-
   publishArtifact in Test := false,
   parallelExecution := false,
 
-  crossScalaVersions := List("2.12.11", "2.13.3")
+  crossScalaVersions := List("2.12.13", "2.13.5")
 ))
 
 //set source dir to source dir in commonPlayModule
@@ -63,26 +60,15 @@ lazy val `play27-refined` = project
   .settings(libraryDependencies := play27Dependencies ++ testDependencies)
   .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value)
 
-lazy val `play26-refined` = project
-  .settings(
-    name := "play26-refined",
-    organization := "be.venneborg"
-  )
-  .settings(unmanagedSourceDirectories in Compile ++= sourceScalaDir.value )
-  .settings(unmanagedSourceDirectories in Test ++= sourceTestDir.value )
-  .settings(unmanagedResourceDirectories in Test ++= resourceTestDir.value )
-  .settings(libraryDependencies := play26Dependencies ++ testDependencies)
-  .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(_.startsWith("2.12")))
-
 lazy val example = (project in file("example"))
   .enablePlugins(PlayWeb)
   .settings()
   .settings(publishArtifact := false)
   .settings(crossScalaVersions := (crossScalaVersions in ThisBuild).value.filter(_ startsWith "2.12"))
   .settings(scalaVersion := (crossScalaVersions in ThisBuild).value.find(_ startsWith "2.12").get)
-  .dependsOn(`play26-refined` % "test->test;compile->test,compile")
+  .dependsOn(`play27-refined` % "test->test;compile->test,compile")
 
 lazy val `play-refined` = (project in file("."))
   .settings(publishArtifact := false)
   .settings(crossScalaVersions := Seq.empty)
-  .aggregate(`play28-refined`, `play27-refined`, `play26-refined`, example)
+  .aggregate(`play28-refined`, `play27-refined`, example)
