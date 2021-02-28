@@ -3,9 +3,8 @@ import sbt._
 object Dependencies {
 
   val refinedVersion = "0.9.21"
-  val play26Version  = "2.6.25"
-  val play27Version  = "2.7.7"
-  val play28Version  = "2.8.5"
+  val play27Version  = "2.7.9"
+  val play28Version  = "2.8.6"
 
   val refined   =         "eu.timepit"                 %%    "refined"                  % refinedVersion
 
@@ -18,12 +17,6 @@ object Dependencies {
   val play28NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play28Version  % "test"
   val scalaTestPlusPlay28 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "4.0.3"  % "test"
 
-  val play26WsJson        = "com.typesafe.play"          %%    "play-ws-standalone-json"  % "2.0.8"  % "test"
-  val play26Json          = "com.typesafe.play"          %%    "play-json"                % "2.6.14"
-  val play26              = "com.typesafe.play"          %%    "play"                     % play26Version
-  val play26NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play26Version  % "test"
-  val scalaTestPlusPlay26 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "3.1.3"  % "test"
-
   val play27WsJson        = "com.typesafe.play"          %%    "play-ws-standalone-json"  % "2.0.8"  % "test"
   val play27Json          = "com.typesafe.play"          %%    "play-json"                % "2.7.4"
   val play27              = "com.typesafe.play"          %%    "play"                     % play27Version
@@ -34,6 +27,5 @@ object Dependencies {
   val testDependencies = Seq(scalaCheck)
   val play28Dependencies = Seq(refined, play28, play28Json, play28NettyServer, scalaTestPlusPlay28, play28WsJson)
   val play27Dependencies = Seq(refined, play27, play27Json, play27NettyServer, scalaTestPlusPlay27, play27WsJson, play27NettyUnix)
-  val play26Dependencies = Seq(refined, play26, play26Json, play26NettyServer, scalaTestPlusPlay26, play26WsJson)
 
 }

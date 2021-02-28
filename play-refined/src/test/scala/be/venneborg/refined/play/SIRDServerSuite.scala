@@ -8,6 +8,7 @@ import org.scalatest.time.{Seconds, Span}
 import org.scalatest.{BeforeAndAfterAll, FunSuite, Matchers}
 import play.api.libs.json._
 import play.api.libs.ws.ahc.AhcWSClient
+import play.api.data.FormBinding.Implicits._
 import play.api.mvc._
 import play.api.routing.sird._
 import play.core.server.Server
