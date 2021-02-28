@@ -30,7 +30,7 @@ inThisBuild(List(
   publishArtifact in Test := false,
   parallelExecution := false,
 
-  crossScalaVersions := List("2.12.11", "2.13.3")
+  crossScalaVersions := List("2.12.13", "2.13.5")
 ))
 
 //set source dir to source dir in commonPlayModule
