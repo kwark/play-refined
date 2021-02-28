@@ -9,7 +9,7 @@ object Dependencies {
   val refined   =         "eu.timepit"                 %%    "refined"                  % refinedVersion
 
   val refinedScalacheck = "eu.timepit"                 %%    "refined-scalacheck"       % refinedVersion   % "test"
-  val scalaCheck        = "org.scalacheck"             %%    "scalacheck"               % "1.15.1"  % "test"
+  val scalaCheck        = "org.scalacheck"             %%    "scalacheck"               % "1.15.3"  % "test"
 
   val play28WsJson        = "com.typesafe.play"          %%    "play-ws-standalone-json"  % "2.1.2"  % "test"
   val play28Json          = "com.typesafe.play"          %%    "play-json"                % "2.9.1"
@@ -22,7 +22,7 @@ object Dependencies {
   val play27              = "com.typesafe.play"          %%    "play"                     % play27Version
   val play27NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play27Version  % "test"
   val scalaTestPlusPlay27 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "4.0.3"  % "test"
-  val play27NettyUnix     = "io.netty" % "netty-transport-native-unix-common" % "4.1.54.Final" % "test"
+  val play27NettyUnix     = "io.netty" % "netty-transport-native-unix-common" % "4.1.59.Final" % "test"
 
   val testDependencies = Seq(scalaCheck)
   val play28Dependencies = Seq(refined, play28, play28Json, play28NettyServer, scalaTestPlusPlay28, play28WsJson)
