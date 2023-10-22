@@ -12,7 +12,7 @@ object Dependencies {
   val scalaCheck        = "org.scalacheck"             %%    "scalacheck"               % "1.17.0"  % "test"
 
   val play28WsJson        = "com.typesafe.play"          %%    "play-ws-standalone-json"  % "2.1.10"  % "test"
-  val play28Json          = "com.typesafe.play"          %%    "play-json"                % "2.9.4"
+  val play28Json          = "com.typesafe.play"          %%    "play-json"                % "2.10.2"
   val play28              = "com.typesafe.play"          %%    "play"                     % play28Version
   val play28NettyServer   = "com.typesafe.play"          %%    "play-netty-server"        % play28Version  % "test"
   val scalaTestPlusPlay28 = "org.scalatestplus.play"     %%    "scalatestplus-play"       % "4.0.3"  % "test"
