@@ -5,13 +5,14 @@ import be.venneborg.genmodel._
 import eu.timepit.refined.W
 import eu.timepit.refined.collection.NonEmpty
 import eu.timepit.refined.numeric.{Greater, Negative, Positive}
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
+import org.scalatest.funsuite.AnyFunSuite
 import play.api.mvc.QueryStringBindable
 
 import scala.language.higherKinds
 
-class RefinedQueryBindersSuite extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
+class RefinedQueryBindersSuite extends AnyFunSuite with Matchers with ScalaCheckPropertyChecks {
 
   import RefinedQueryBinders._
 

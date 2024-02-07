@@ -2,13 +2,14 @@ package be.venneborg.refined.play
 
 import be.venneborg.model._
 import be.venneborg.genmodel._
-import org.scalatest.{FunSuite, Matchers}
+
 import play.api.libs.json.{JsValue, Json, OFormat}
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
-
+import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
 import scala.language.higherKinds
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
 
-class RefinedJsonFormatsSuite extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
+class RefinedJsonFormatsSuite extends AnyFunSuite with Matchers with ScalaCheckPropertyChecks {
 
   test("check refined json serialization/deserialization") {
     import RefinedJsonFormats._
