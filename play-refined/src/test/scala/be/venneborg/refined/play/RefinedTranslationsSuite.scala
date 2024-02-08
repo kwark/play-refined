@@ -9,10 +9,12 @@ import eu.timepit.refined.generic.Equal
 import eu.timepit.refined.numeric.Interval.{Closed, ClosedOpen, Open, OpenClosed}
 import eu.timepit.refined.numeric.{Greater, GreaterEqual, Negative, NonNegative, NonPositive, Positive}
 import eu.timepit.refined.string.{EndsWith, MatchesRegex, StartsWith, Url, Uuid}
-import org.scalatest.{FunSuite, Matchers}
 import shapeless.{::, HNil}
 
-class RefinedTranslationsSuite extends FunSuite with Matchers {
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.matchers.should.Matchers
+
+class RefinedTranslationsSuite extends AnyFunSuite with Matchers {
 
   test("string translations") {
     //Predicate isEmpty() did not fail.
@@ -30,8 +32,8 @@ class RefinedTranslationsSuite extends FunSuite with Matchers {
     //Predicate failed: "foo".endsWith("abc").
     checkTranslation[String, EndsWith[W.`"abc"`.T]]("foo", "error.invalid", Seq("not ending with: abc"))
 
-    //Url predicate failed: no protocol: foo
-    checkTranslation[String, Url]("foo", "error.invalid", Seq("no protocol"))
+    //Url predicate failed: URI is not absolute: foo
+    checkTranslation[String, Url]("foo", "error.invalid", Seq("Url predicate failed: URI is not absolute"))
 
     //Predicate failed: "9".matches("\d\d").
     checkTranslation[String, MatchesRegex[W.`"\\\\d\\\\d"`.T]]("9", "error.pattern", Seq("\\d\\d"))

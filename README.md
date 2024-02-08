@@ -8,7 +8,7 @@ using the [Refined library](https://github.com/fthomas/refined) with Lightbend's
 
 It allows you to easily use refined types with Play.  
 
-Scala 2.11, 2.12, 2.13 and Play 2.5, 2.6, 2.7 & 2.8  are supported.
+Scala 2.11, 2.12, 2.13 and Play 2.5, 2.6, 2.7, 2.8, 2.9 and 3.0 are supported.
 You'll also need to use Java8 or later.
 
 The library provides the following functionality:
@@ -31,12 +31,16 @@ Versions: The table below lists the versions and their main dependencies.
 |play27-refined  |0.5.0   | ✓          | ✓          | ✓          |2.7.x  | 0.9.8   |
 |play27-refined  |0.6.0   |            | ✓          | ✓          |2.7.x  | 0.9.14  |
 |play28-refined  |0.6.0   |            | ✓          | ✓          |2.8.x  | 0.9.14  |
+|play28-refined  |0.x.0   |            |            | ✓          |2.8.x  | 0.11.1 |
+|play29-refined  |0.x.0   |            |            | ✓          |2.9.x  | 0.11.1  |
+|play30-refined  |0.x.0   |            |            | ✓          |3.x.x  | 0.11.1  |
 
 Starting from version `0.6.0` support for scala 2.11 was dropped.
+Starting from version `0.x.0` support for scala 2.12 was dropped.
 
 Depending on the artifact and version you need to add the correct dependency to your SBT dependencies:
 
-```libraryDependencies += "be.venneborg" %% "play27-refined" % <version>```
+```libraryDependencies += "be.venneborg" %% "play28-refined" % <version>```
 
 ### Json Formatters
 
@@ -50,7 +54,7 @@ case class FooBar(foo: NonEmptyString, bar: PosInt)
 
 ```
 
-To [automatically serialize/deserialize](https://www.playframework.com/documentation/2.6.x/ScalaJsonAutomated) this case class containing refined types, 
+To [automatically serialize/deserialize](https://www.playframework.com/documentation/2.8.x/ScalaJsonAutomated) this case class containing refined types, 
 you just need an additional import and derive a JSON `Formatter`
 
 ```
@@ -63,7 +67,7 @@ implicit val fooBarFormat = Json.format[FooBar]
 
 ### Form binding
 
-You can just as easily [bind/unbind to/from a Form](https://www.playframework.com/documentation/2.6.x/ScalaForms#Putting-it-all-together)
+You can just as easily [bind/unbind to/from a Form](https://www.playframework.com/documentation/2.8.x/ScalaForms#Putting-it-all-together)
 
 ```
 import play.api.data.{Form, Forms}

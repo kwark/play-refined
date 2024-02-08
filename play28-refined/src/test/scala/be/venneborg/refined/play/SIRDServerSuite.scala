@@ -5,15 +5,19 @@ import SIRDHelper._
 import eu.timepit.refined.auto._
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
-import org.scalatest.{BeforeAndAfterAll, FunSuite, Matchers}
+import com.typesafe.sslconfig.ssl.DisabledComplainingHostnameVerifier
 import play.api.libs.json._
 import play.api.libs.ws.ahc.AhcWSClient
 import play.api.data.FormBinding.Implicits._
 import play.api.mvc._
 import play.api.routing.sird._
 import play.core.server.Server
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.BeforeAndAfterAll
+import play.api.mvc
 
-class SIRDServerSuite extends FunSuite with ScalaFutures with Matchers with BeforeAndAfterAll {
+class SIRDServerSuite extends AnyFunSuite with ScalaFutures with Matchers with BeforeAndAfterAll {
 
   import RefinedPathBinders._
 

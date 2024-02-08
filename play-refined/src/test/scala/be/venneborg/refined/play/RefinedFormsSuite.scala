@@ -2,8 +2,9 @@ package be.venneborg.refined.play
 
 import eu.timepit.refined.collection.NonEmpty
 import eu.timepit.refined.numeric.{Negative, Positive}
-import org.scalatest.prop.GeneratorDrivenPropertyChecks
-import org.scalatest.{FunSuite, Matchers}
+import org.scalatest.matchers.should.Matchers
+import org.scalatestplus.scalacheck.ScalaCheckPropertyChecks
+import org.scalatest.funsuite.AnyFunSuite
 import play.api.data.{Form, Forms}
 import play.api.data.Forms.{mapping, optional}
 import be.venneborg.model._
@@ -11,7 +12,7 @@ import be.venneborg.genmodel._
 
 import scala.language.higherKinds
 
-class RefinedFormsSuite extends FunSuite with Matchers with GeneratorDrivenPropertyChecks {
+class RefinedFormsSuite extends AnyFunSuite with Matchers with ScalaCheckPropertyChecks  {
 
   import RefinedForms._
 

@@ -7,13 +7,15 @@ import akka.actor.ActorSystem
 import akka.stream.{ActorMaterializer, Materializer}
 import play.api.routing.sird._
 import play.api.routing._
-import org.scalatest.{FunSuite, Matchers}
 import play.api.http.HttpVerbs
 import play.api.mvc.Results
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.funsuite.AnyFunSuite
 
-class SIRDRoutingSuite extends FunSuite with Matchers {
+class SIRDRoutingSuite extends AnyFunSuite with Matchers {
 
-  import RefinedPathBinders._
+   import RefinedPathBinders._
+
 
   test("refined string routing") {
     val extractor: PathBindableExtractor[RS] = new PathBindableExtractor[RS]

@@ -6,14 +6,16 @@ import eu.timepit.refined.auto._
 import global.MyApplicationLoader
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
-import org.scalatest.{BeforeAndAfterAll, FunSuite, Matchers}
+import org.scalatest.BeforeAndAfterAll
 import org.scalatestplus.play.{BaseOneServerPerSuite, FakeApplicationFactory, WsScalaTestClient}
 import play.api.libs.json.{Json, __}
 import play.api.libs.ws.WSClient
 import play.api.libs.ws.ahc.AhcWSClient
 import play.api.{Application, ApplicationLoader, Environment}
+import org.scalatest.matchers.should.Matchers
+import org.scalatest.funsuite.AnyFunSuite
 
-class PlayServerSuite extends FunSuite with BaseOneServerPerSuite with FakeApplicationFactory with ScalaFutures with Matchers with BeforeAndAfterAll with WsScalaTestClient {
+class PlayServerSuite extends AnyFunSuite with BaseOneServerPerSuite with FakeApplicationFactory with ScalaFutures with Matchers with BeforeAndAfterAll with WsScalaTestClient {
 
   val tc = TestClass("foo", Some("bar"), "baz", Some("foobar"), 5, Some(Int.MaxValue), Long.MinValue, Some(-1L), 12.0, Some(Double.MaxValue))
 
